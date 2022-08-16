@@ -21,9 +21,9 @@ public class MovieResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getByID(@PathParam("id") Long id) {
-        return Movie.findByIdOptional(id).
-                map(movie -> Response.ok(movie).build()).
-                orElse(Response.status(Response.Status.NOT_FOUND).build());
+        return Movie.findByIdOptional(id)
+                .map(movie -> Response.ok(movie).build())
+                .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
     @GET
@@ -34,7 +34,6 @@ public class MovieResource {
                 .singleResultOptional()
                 .map(movie -> Response.ok(movie).build())
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
-
     }
 
     @GET
@@ -63,7 +62,7 @@ public class MovieResource {
     @Transactional
     @Path("{id}")
     public Response deleteByID(@PathParam("id") Long id) {
-        boolean deleted = Movie.deleteById(id);
+        var deleted = Movie.deleteById(id);
         if (deleted) {
             return Response.noContent().build();
         }

@@ -8,10 +8,10 @@ import javax.persistence.*;
 @Table
 public class Movie extends PanacheEntity {
 
-    @Column(length = 100)
+    @Column
     public String title;
 
-    @Column(length = 200)
+    @Column
     public String description;
 
     @Column
