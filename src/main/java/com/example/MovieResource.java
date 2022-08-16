@@ -30,9 +30,11 @@ public class MovieResource {
     @Path("country/{country}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getByCountry(@PathParam("country") String country) {
-        List<Movie> movies = Movie.list("SELECT m FROM Movie m where m.country = ?1 ORDER BY id"
-                + "DESC", country);
-        return Response.ok(movies).build();
+        return Movie.find("country", country)
+                .singleResultOptional()
+                .map(movie -> Response.ok(movie).build())
+                .orElse(Response.status(Response.Status.NOT_FOUND).build());
+
     }
 
     @GET
@@ -58,6 +60,7 @@ public class MovieResource {
     }
 
     @DELETE
+    @Transactional
     @Path("{id}")
     public Response deleteByID(@PathParam("id") Long id) {
         boolean deleted = Movie.deleteById(id);
