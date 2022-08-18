@@ -1,4 +1,4 @@
-package com.quarkus.entity;
+package com.quarkus.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
@@ -7,11 +7,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Movie")
 public class Movie extends PanacheEntity {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column
-//    private Long id;
-
     @Column
     private String title;
 

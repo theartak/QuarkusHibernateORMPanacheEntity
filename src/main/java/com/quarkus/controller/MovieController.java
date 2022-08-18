@@ -1,7 +1,7 @@
 package com.quarkus.controller;
 
 import com.quarkus.service.MovieService;
-import com.quarkus.entity.Movie;
+import com.quarkus.model.Movie;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;

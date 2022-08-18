@@ -1,6 +1,6 @@
 package com.quarkus.service;
 
-import com.quarkus.entity.Movie;
+import com.quarkus.model.Movie;
 import com.quarkus.repository.MovieRepository;
 
 import javax.enterprise.context.ApplicationScoped;
